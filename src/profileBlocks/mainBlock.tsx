@@ -104,8 +104,6 @@ const MainBlock: React.FC<{ isCreate: boolean; setCreate: (isCreate: boolean) =>
 
     }, [selectedID]);
 
-    console.log(selectedMessage);
-
     if (profile) {
         return (
 

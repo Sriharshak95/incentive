@@ -31,7 +31,6 @@ const Create: React.FC<CreateInterface> = ({ handleChange = () => { }, handleSub
             setValidFileSize(false);
             const fileArray = Array.from(files);
             const fileSize = fileArray[0].size/1024/1024;
-            console.log(fileSize);
             if(fileSize > 10) {
                 setValidFileSize(false);
             } else {
