@@ -20,7 +20,7 @@ export const AppLayout = () => {
 
     const getAllMessages = async () => {
         try {
-            const response = await fetch(`http://localhost:5001/api/messages`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/messages`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

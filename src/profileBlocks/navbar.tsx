@@ -8,7 +8,7 @@ const Navbar = () => {
     const {profile, setProfile} = useContext(AuthenticationContext);
 
     useEffect(() => {
-        fetch('http://localhost:5001/profile', { credentials: 'include' })
+        fetch(`${process.env.REACT_APP_API_URL}/profile`, { credentials: 'include' })
           .then(response => {
             if (response.ok) return response.json();
             throw new Error('Authentication failed');
@@ -29,7 +29,7 @@ const Navbar = () => {
         try {
             // const response = await axios.get('http://localhost:5000/login');
             // const authUrl = response.data.url;
-            window.location.href = "http://localhost:5001/auth/google";
+            window.location.href = process.env.REACT_APP_API_URL+"/auth/google";
 
         } catch (error) {
             console.error('Error initiating Twitter login', error);
@@ -38,7 +38,7 @@ const Navbar = () => {
     };
 
     const handleLogOut = () => {
-        window.location.href = "http://localhost:5001/logout";
+        window.location.href = process.env.REACT_APP_API_URL+"/logout";
     }
 
     return (

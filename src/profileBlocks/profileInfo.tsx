@@ -24,7 +24,7 @@ const ProfileInfo:React.FC<ProfileInfoInterface> = ({profileImage = "", isEditin
                 src={profileImage} alt="profile Image" />
             <div className="py-1">
                 <h3 className="font-bold text-xl text-gray-800 dark:text-white mb-1">{profile?.displayName}</h3>
-                <div className="inline-flex text-sm text-gray-700 dark:text-gray-300 items-center w-full">
+                <div className="inline-flex text-sm text-gray-700 dark:text-gray-300 items-center justify-center w-full">
                     {isEditing ? (
                         <div className="flex items-center w-full">
                             <textarea placeholder="Write your thoughts here..." className="w-full" onChange={(e) => setNewBio(e.target.value)} maxLength={content_length} value={newBio}></textarea>

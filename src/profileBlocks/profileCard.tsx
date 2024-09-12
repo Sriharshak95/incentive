@@ -32,7 +32,7 @@ export const ProfileCard: React.FC<{ setIsExpanded: (isExpanded: boolean) => voi
     const handleSaveClick = async () => {
         setIsLoading(true); // Start loading spinner
         try {
-            const response = await fetch(`http://localhost:5001/api/user/${profile.googleId}/bio`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/user/${profile.googleId}/bio`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

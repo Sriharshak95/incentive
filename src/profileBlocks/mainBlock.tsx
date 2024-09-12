@@ -63,7 +63,7 @@ const MainBlock: React.FC<{ isCreate: boolean; setCreate: (isCreate: boolean) =>
                 formData.append('attachments', file);
             });
 
-            const response = await fetch(`http://localhost:5001/api/messages`, {
+            const response = await fetch(`${process.env.REACT_APP_API_URL}/api/messages`, {
                 method: 'POST',
                 headers: {
                     'Authorization': `Bearer ${localStorage.getItem('token')}`
