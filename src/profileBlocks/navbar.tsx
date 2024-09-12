@@ -14,6 +14,7 @@ const Navbar = () => {
             throw new Error('Authentication failed');
           })
           .then(data => {
+            console.log(data.token);
             // Store token in localStorage or context
             if(localStorage.getItem('token')!==null) {
                 localStorage.setItem('token', data.token);
