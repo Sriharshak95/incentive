@@ -6,7 +6,6 @@ import isTokenExpired from '../utils/commonUtils';
 const Navbar = () => {
 
     const { profile, setProfile } = useContext(AuthenticationContext);
-    console.log(document.cookie);
     useEffect(() => {
         fetch(`${process.env.REACT_APP_API_URL}/profile`, { credentials: 'include' })
             .then(response => {
