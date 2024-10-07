@@ -2,8 +2,11 @@ import React, { useEffect, useState, useContext, useMemo } from 'react';
 import { AuthenticationContext } from '../context';
 import Button from '../components/button';
 import isTokenExpired from '../utils/commonUtils';
+import deleteCookies from '../utils/commonUtils';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 
-const Navbar = () => {
+const Navbar:React.FC<{toggleSidebar: () => void}> = ({toggleSidebar}) => {
 
     const { profile, setProfile } = useContext(AuthenticationContext);
     useEffect(() => {
@@ -37,12 +40,14 @@ const Navbar = () => {
     };
 
     const handleLogOut = () => {
+        deleteCookies();
         window.location.href = process.env.REACT_APP_API_URL + "/logout";
     }
 
     return (
         <div className='shadow p-4'>
             <div className='text-xl flex justify-between items-center'>
+                <FontAwesomeIcon icon={faBars} onClick={() => toggleSidebar()} className="cursor-pointer p-3 hover:bg-slate-200 hover:rounded md:hidden" />
                 <p className='logo'>Incentive</p>
                 <Button onClick={profile === null ? handleLogin : handleLogOut} label={profile === null ? "Sign In" : "Sign Out"} />
             </div>

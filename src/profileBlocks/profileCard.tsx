@@ -1,11 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthenticationContext } from '../context';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCheck, faChevronDown, faChevronUp, faClose, faPencilAlt, faSpinner } from '@fortawesome/free-solid-svg-icons'
+import { faArrowAltCircleLeft, faCheck, faChevronDown, faChevronUp, faClose, faPencilAlt, faSpinner } from '@fortawesome/free-solid-svg-icons'
 import Button from '../components/button';
 import ProfileInfo from './profileInfo';
 
-export const ProfileCard: React.FC<{ setIsExpanded: (isExpanded: boolean) => void, isExpanded: boolean }> = ({ setIsExpanded = () => {}, isExpanded = false }) => {
+export const ProfileCard: React.FC<{ setIsExpanded: (isExpanded: boolean) => void, isExpanded: boolean, toggleSidebar: () => void }> = ({ setIsExpanded = () => {}, isExpanded = false, toggleSidebar }) => {
     const { profile, setProfile } = useContext(AuthenticationContext);
     const [profileImage, setProfileImage] = useState("");
     const [isEditing, setIsEditing] = useState(false);
@@ -62,6 +62,7 @@ export const ProfileCard: React.FC<{ setIsExpanded: (isExpanded: boolean) => voi
             <div className={`transition-all duration-800 ${isExpanded ? 'h-auto' : 'h-20'}`}>
                 <div className="flex justify-between items-center">
                     <Button onClick={handleToggleExpand} addClass="text-right" icon={<FontAwesomeIcon icon={isExpanded ? faChevronUp : faChevronDown} className='text-gray-500' />} />
+                    <Button onClick={() => toggleSidebar()} addClass='md:hidden' icon={<FontAwesomeIcon icon={faArrowAltCircleLeft} className='text-gray-500' />} />
                 </div>
                 {isExpanded && (<ProfileInfo
                     profileImage={profileImage} 
